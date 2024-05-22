@@ -1,0 +1,48 @@
+// Original code with errors
+/*
+public int sum(int n) { 
+    if (n == 0) {            
+        return 0;          
+    }         
+    else {    
+        return n + sum(n);   
+    }   
+}
+*/
+
+public int sum(int n) {
+    // Base case: if n is 0, return 0 because the sum of values from 0 to 0 is 0
+    if (n == 0) {            
+        return 0;          
+    }         
+    else {    
+        // Recursive case: add n to the sum of the values from 0 to (n-1)
+        // This ensures that we are reducing the problem size by 1 with each recursive call
+        // and eventually reaching the base case
+        return n + sum(n - 1);   
+    }   
+}
+
+/
+ Detailed Explanation of the Changes:
+ 
+  1. The base case in the original code is correct: 
+    if (n == 0) { return 0; }
+     - This correctly handles the simplest case where there are no values to sum.
+  
+  2. The recursive case in the original code has an error:
+     return n + sum(n);
+     - This causes infinite recursion because the argument to sum() never changes.
+     - The method will keep calling itself with the same value of n, leading to a stack overflow.
+  
+  3. The corrected recursive case should be:
+     return n + sum(n - 1);
+     - This decreases the value of n by 1 with each recursive call.
+     - It ensures that the recursion progresses towards the base case.
+     - For example, if n is 3, the method calls will be:
+       sum(3) -> 3 + sum(2) -> 3 + 2 + sum(1) -> 3 + 2 + 1 + sum(0)
+     - When n reaches 0, the base case is triggered, returning 0.
+     - The recursion then unwinds, adding the values back up: 0 + 1 + 2 + 3 = 6.
+  
+  These changes ensure that the method correctly computes the sum of values from 0 to n using recursion.
+ /
