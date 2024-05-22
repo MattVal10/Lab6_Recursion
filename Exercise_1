@@ -1,0 +1,32 @@
+public int mystery(int a, int b) {
+    // Base case: if b equals 1, return a
+    // This serves as the stopping condition for the recursion.
+    if (b == 1) {
+        return a;
+    }
+    // Recursive case: add a to the result of mystery(a, b - 1)
+    // This effectively adds a to itself b times, which is equivalent to multiplying a by b.
+    else {
+        return a + mystery(a, b - 1);
+    }
+}
+
+// Example outputs and detailed explanations:
+
+// mystery(5, 3) returns 15
+// Step-by-step execution:
+// mystery(5, 3) calls mystery(5, 2)
+// mystery(5, 2) calls mystery(5, 1)
+// mystery(5, 1) returns 5 (base case)
+// mystery(5, 2) returns 5 + 5 = 10
+// mystery(5, 3) returns 10 + 5 = 15
+
+// mystery(2, 4) returns 8
+// Step-by-step execution:
+// mystery(2, 4) calls mystery(2, 3)
+// mystery(2, 3) calls mystery(2, 2)
+// mystery(2, 2) calls mystery(2, 1)
+// mystery(2, 1) returns 2 (base case)
+// mystery(2, 2) returns 2 + 2 = 4
+// mystery(2, 3) returns 4 + 2 = 6
+// mystery(2, 4) returns 6 + 2 = 8
